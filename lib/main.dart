@@ -1,0 +1,34 @@
+name: Windows Exe Derleyici
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: Windows Uygulamasını İnşa Et
+    runs-on: windows-latest
+
+    steps:
+      - name: Kodu Kopyala
+        uses: actions/checkout@v3
+
+      - name: Flutter'ı Bulut Makinesine Kur
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          
+      - name: Proje Altyapısını ve Windows Klasörünü Oluştur
+        run: |
+          flutter config --enable-windows-desktop
+          flutter create --platforms=windows .
+          flutter pub get
+
+      - name: EXE Dosyasını İnşa Et
+        run: flutter build windows --release
+
+      - name: Çıktıyı İndirilebilir (Artifact) Yap
+        uses: actions/upload-artifact@v3
+        with:
+          name: GameTranslator-PC-Release
+          path: build/windows/runner/Release
