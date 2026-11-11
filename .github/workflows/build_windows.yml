@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Kodu Kopyala
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Flutter'ı Bulut Makinesine Kur
         uses: subosito/flutter-action@v2
@@ -28,7 +28,7 @@ jobs:
         run: flutter build windows --release
 
       - name: Çıktıyı İndirilebilir (Artifact) Yap
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: GameTranslator-PC-Release
           path: build/windows/runner/Release
