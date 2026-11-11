@@ -19,10 +19,10 @@ jobs:
           channel: 'stable'
           
       - name: Proje Altyapısını ve Windows Klasörünü Oluştur
-        run: |
-          flutter config --enable-windows-desktop
-          flutter create --platforms=windows .
-          flutter pub get
+     run: |
+       flutter config --enable-windows-desktop
+       flutter create --platforms=windows --project-name game_translator .
+       flutter pub get
 
       - name: EXE Dosyasını İnşa Et
         run: flutter build windows --release
