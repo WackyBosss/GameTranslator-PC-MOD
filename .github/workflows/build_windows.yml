@@ -17,12 +17,12 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-          
-      - name: Proje Altyapısını ve Windows Klasörünü Oluştur
+       - name: Proje Altyapısını ve Windows Klasörünü Oluştur
      run: |
        flutter config --enable-windows-desktop
        flutter create --platforms=windows --project-name game_translator .
-       flutter pub get
+       flutter pub get   
+      
 
       - name: EXE Dosyasını İnşa Et
         run: flutter build windows --release
